@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+if [  $# ==  0 ]; then
+	>&2 echo "Usage: shit <command> [<args>]"
+	exit 1
+fi
+
+command_path="$(pwd)/commands/$1"
+
+if [ ! -f $command_path ]; then
+	>&2 echo "command $1 not found"
+fi
+
+. $command_path
+
